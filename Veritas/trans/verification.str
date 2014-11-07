@@ -73,6 +73,22 @@ rules
 	consistency-failure-msg : 
 		VerificationSuccess(lemmas) -> 
 		$[Found inconsistency using lemmas: [<separate-by(|", "); concat-strings> lemmas].]
+
+rules
+	structural-induction-all : input@(selected, position, ast, path, project-path) -> None()
+	where 
+		filename := <induction-filename> path; 
+		output-ast := <induction-file-output> ast;
+		output := <pp-module <+ pp-debug(pp-module)> output-ast;
+		<write-file> (filename, <write-to-string> output)
+		
+	induction-file-output : Module(m,i,body) -> Module(mgen,i,body)
+	where
+		mgen := m
+	
+	
+	
+	induction-filename = remove-extension; <conc-strings> (<id>, "-gen-induct.stl")
 	
 
 rules

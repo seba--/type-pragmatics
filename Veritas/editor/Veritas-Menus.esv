@@ -35,6 +35,7 @@ menus
     action: "Generate SMT"         = generate-smt (openeditor) (realtime)
 
   menu: "Verification"
+  	action: "Structural induction (all goals)" = structural-induction-all
     action: "Verify with Vampire" = verify-vampire
     action: "Verify with Vampire (60)" = verify-vampire-60
     action: "Verify with Vampire (120)" = verify-vampire-120

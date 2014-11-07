@@ -51,6 +51,10 @@ rules // Incremental code generation of project using compilation library.
     outfiles := <generate-files(|filename,rulez)> strings;
     result := <if <?[]> goals then !None() else !(<Hd> outfiles, <Hd> strings) end> ()
 
+  pp-module =
+    ast2abox(|[<parse-pptable-file> "syntax/Veritas.generated.pp"]);
+    box2text-string(|100)
+    
   pp-formula =
     ast2abox(|[<parse-pptable-file> "trans/fof-rewriting.pp"]);
     box2text-string(|100)
